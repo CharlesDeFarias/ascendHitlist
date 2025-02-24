@@ -1,7 +1,3 @@
-import { useState } from 'react'
-import './App.css'
-import Hitlist from './Components/Hitlist.jsx'
-
 // Do: Build a Hitlist using React (JS or TS)
 // Definition of Done:
 // Companies should be saved in JSON Server. (https://www.npmjs.com/package/json-server)
@@ -14,14 +10,13 @@ import Hitlist from './Components/Hitlist.jsx'
 // Component: New company form where users can add new companies.
 // Component: Error handling component that shows up when an API request fails.
 
-function App() {
-  const [count, setCount] = useState(0)
-
-  return (
-    <>
-    <Hitlist />
-    </>
-  )
-}
-
-export default App
+const Listbody = () => {
+    return (
+      <>
+      <p>HELLO WORLD-listbody</p>
+      </>
+    )
+  };
+  
+  export default Listbody
+  

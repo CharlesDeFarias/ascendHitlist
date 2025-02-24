@@ -1,6 +1,6 @@
-import { useState } from 'react'
-import './App.css'
-import Hitlist from './Components/Hitlist.jsx'
+import ListBody from "./ListBody";
+import SubmitForm from "./SubmitForm";
+import ErrorHandler from "./ErrorHandler";
 
 // Do: Build a Hitlist using React (JS or TS)
 // Definition of Done:
@@ -10,18 +10,17 @@ import Hitlist from './Components/Hitlist.jsx'
 // User should be able to filter companies based on criteria of the developer’s choice (e.g., by priority, location, or name).
 // Implement error handling for at least one API request
 
-// Component: Hitlist body where companies show up. Users can delete companies and filter them based on various criteria.
 // Component: New company form where users can add new companies.
 // Component: Error handling component that shows up when an API request fails.
 
-function App() {
-  const [count, setCount] = useState(0)
-
+const Hitlist = () => {
   return (
     <>
-    <Hitlist />
+    <ListBody />
+    <SubmitForm />
+    <ErrorHandler />
     </>
   )
-}
+};
 
-export default App
+export default Hitlist
