@@ -18,16 +18,15 @@ const SubmitForm = () => {
         location:"",
         note:"",
         tags:[],
+        priority: "0"
     })
 
     const addNewProspect = (event) => {
         console.log(newProspect)
         event.preventDefault()
         console.log('button clicked', event.target)
-        const baseProspect = {
-            ...newProspect,
-            important: Math.random() < 0.5,
-          }
+        // this is where i would add any extra fields if i wanted to.
+        const baseProspect = {...newProspect}
         axios
         .post('http://localhost:3001/Prospects', baseProspect)
         .then(response => {
@@ -54,6 +53,7 @@ const SubmitForm = () => {
         <input name="salary" placeholder="Annual Salary" onChange={handleInputChange}/>
         <input name="location" placeholder="Location" onChange={handleInputChange}/>
         <input name="note" placeholder="Any notes?" onChange={handleInputChange}/> 
+        <input name="priority" placeholder="priority number" onChange={handleInputChange}/>
         <input name="tags" placeholder="Tags separated by comma. Like, this" onChange={handleInputChange}/>
         <button type="submit">save</button>
       </form>  

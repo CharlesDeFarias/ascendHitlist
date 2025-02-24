@@ -1,5 +1,4 @@
 import ListBody from "./ListBody";
-// import prospects from '.../db.json';
 import SubmitForm from "./SubmitForm";
 import ErrorHandler from "./ErrorHandler";
 
@@ -13,6 +12,7 @@ import ErrorHandler from "./ErrorHandler";
 // Component: Error handling component that shows up when an API request fails.
 
 const Hitlist = ({prospects}) => {
+  
   return (
     <>
     <ListBody prospects={prospects}/>

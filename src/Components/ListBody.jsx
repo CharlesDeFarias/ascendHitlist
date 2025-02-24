@@ -1,37 +1,58 @@
 import { useState, useEffect} from 'react'
 import ListHeader from './ListHeader';
-//ok got filtering working bare minimum level. problem is it refreshes page immdiately so unless you type quickly, you can only get one letter in. need to fix that. also ideally you can search by any field, not just name.
+//ok I somehow completely messed this up. But the structures good i think so i dont want to revert. Basically soemthing's wrong with the way i'm passing state. When i select an option in the dropdown, even though console.log says i've got the right e.target.value, the state doesn't update. Also when i type into the input, it a) immediately starts filtering after one character is entered making it so you cant type a full word and b) seems to be delayed by a full character.
+//i've somehow messed up both the state and rendering, likely through the same mistake.
 //also need to add delete functionality
+//I need to break this up a little more. Lift listHeader up into hitlist. don't need to i guess, but i would like to.
 
 const ListBody = ({prospects}) => {
   const [filter, setFilter]  = useState('');
-// console.log(prospects)
-console.log(prospects)
-  const finalProspects = prospects.filter(prospect => prospect.name.toLowerCase().includes(filter.toLowerCase()))
+  const [selector, setSelector] = useState('name')
 
+  const handleFilter = (e) => {
+    setFilter(e.target.value)
+    }
+  
+  const handleSelect = (e) => {
+    setSelector(e.target.value)
+  } 
 
-  //could theoretically put the id as a react hook, but doesnt seem worth it.
-  const handleDelete = (id) => {
-    console.log("need to set up database properly for this to work. handledelete")
-  //  finalProspects.remove(id)
-  //     .then(res => {
-  //       console.log(res)
-  //       jobs = jobs.filter(job => job.id !== id)
-  //     })
-  }
+  let isTags = false;
+
+  const sanitizedProspects = prospects.map(prospect => {
+    return Object.keys(prospect).reduce((newObj, key) => {
+      if(key === "tags"){
+        console.log(prospect[key])
+        newObj[key] = prospect[key].join(", ")
+      } 
+      if(typeof prospect[key] === "string"){
+      newObj[key] = prospect[key].toLowerCase();
+      }
+      console.log({newObj})
+      return newObj;
+  
+    }, {});
+  })
+
+  const finalProspects = sanitizedProspects.filter(prospect => prospect[selector].includes(filter.toLowerCase()))
 
     return (
       <div className="listBody parent container">
-        <ListHeader setFilter={setFilter} />
+        <ListHeader 
+          filter={filter} 
+          handleFilterChange={handleFilter} 
+          selector={selector} 
+          handleSelectChange={handleSelect}
+          />
         <section>
         {finalProspects.map((prospect) => {
-          return (
+          return ( 
           <ul className='prospectRow' key={prospect.id}> 
-            <h3>Company:   {prospect.name}</h3>  
+            <h3>Company: {prospect.name}</h3>  
             <button onClick={() => handleDelete(prospect.id)}>Delete</button>
-            <li >{prospect.type}: Salary:{prospect.salary} Location: </li>
-            <li >Note: {prospect.location} - {prospect.note}</li>
-            <li >Tags:{prospect.tags.join(", ")}</li>
+            <li>Type: {prospect.type} Salary:{prospect.salary} Location: {prospect.location} </li>
+            <li>Note: {prospect.location} Note: {prospect.note}</li>
+            <li>Priority: {prospect.priority} Tags:{prospect.tags}</li>
           </ul>
           )
         })}
@@ -41,9 +62,3 @@ console.log(prospects)
 };
   
 export default ListBody
-
-
-// <Add jobName={jobName} jobLocation={jobLocation} jobSalary={jobSalary} jobNameFunc={handleNewJobName} jobLocationFunc={handleNewJobLocation} jobSalaryFunc={handleNewJobSalary} onSubmit={pushToDataBase} />
-
-// <ViewCompany filter={filter} jobs={jobs} deleteFunc={removeFromDatabase}/>
-
