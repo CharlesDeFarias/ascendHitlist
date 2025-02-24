@@ -14,7 +14,7 @@ import ErrorHandler from "./ErrorHandler";
 const Hitlist = () => {
   return (
     <>
-    <ListBody prospects={{}} filter={""} handleDelete={{}}/>
+    <ListBody/>
     {/* <SubmitForm />
     <ErrorHandler /> */}
     </>

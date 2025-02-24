@@ -1,16 +1,8 @@
-// Do: Build a Hitlist using React (JS or TS)
-// Definition of Done:
-// Companies should be saved in JSON Server. (https://www.npmjs.com/package/json-server)
-// User should be able to add companies.
-// User should be able to delete companies.
-// User should be able to filter companies based on criteria of the developer’s choice (e.g., by priority, location, or name).
-// Implement error handling for at least one API request
-
-// Component: Hitlist body where companies show up. Users can delete companies and filter them based on various criteria.
-// Component: New company form where users can add new companies.
-// Component: Error handling component that shows up when an API request fails.
-
- const prospectsMock= [
+import { useState, useEffect} from 'react'
+import ListHeader from './ListHeader';
+//ok got filtering working bare minimum level. problem is it refreshes page immdiately so unless you type quickly, you can only get one letter in. need to fix that. also ideally you can search by any field, not just name.
+//also need to add delete functionality
+ let prospectsMock= [
     {
       "id": "000001",
       "name": "Tilinger's Concierge",
@@ -46,29 +38,47 @@
       "salary": "TBD",
       "tags": ["consulting", "CiC", "Hybrid", "Entrepreneurship"],
       "note": "High effort, investment costs, high reward. Need to register & create promo materials"
+    },
+    {
+      "id": "000005",
+      "name": "test",
+      "location": "Boston, Ma",
+      "type": "Full-time",
+      "salary": "TBD",
+      "tags": ["consulting", "CiC", "Hybrid", "Entrepreneurship"],
+      "note": "High effort, investment costs, high reward. Need to register & create promo materials"
     }
   ];
 
-const ListBody = ({prospects, filter, handleDelete}) => {
+const ListBody = ({prospects}) => {
+  const [filter, setFilter]  = useState('');
   prospects=prospectsMock
-  filter = filter.toLowerCase();
 
-  const finalProspects = prospects.filter(prospect => prospect.name.toLowerCase().includes(filter))
-  console.log(finalProspects)
+  const finalProspects = prospects.filter(prospect => prospect.name.toLowerCase().includes(filter.toLowerCase()))
+
+
+  //could theoretically put the id as a react hook, but doesnt seem worth it.
+  const handleDelete = (id) => {
+    console.log("need to set up database properly for this to work. handledelete")
+  //  finalProspects.remove(id)
+  //     .then(res => {
+  //       console.log(res)
+  //       jobs = jobs.filter(job => job.id !== id)
+  //     })
+  }
 
     return (
       <div className="listBody parent container">
-        <h1>Charles' Hitlist</h1>
+        <ListHeader setFilter={setFilter} />
         <section>
         {finalProspects.map((prospect) => {
           return (
           <ul className='prospectRow' key={prospect.id}> 
             <h3>Company:   {prospect.name}</h3>  
-            <li >Location: {prospect.location}</li>
-            <li >Type:     {prospect.type}</li>
-            <li >Salary:   {prospect.salary}</li>
-            <li >Tags:     {prospect.tags.join(", ")}</li>
-            <li >Note:     {prospect.note}</li>
+            <button onClick={() => handleDelete(prospect.id)}>Delete</button>
+            <li >{prospect.type}: Salary:{prospect.salary} Location: </li>
+            <li >Note: {prospect.location} - {prospect.note}</li>
+            <li >Tags:{prospect.tags.join(", ")}</li>
           </ul>
           )
         })}
@@ -78,4 +88,9 @@ const ListBody = ({prospects, filter, handleDelete}) => {
 };
   
 export default ListBody
+
+
+// <Add jobName={jobName} jobLocation={jobLocation} jobSalary={jobSalary} jobNameFunc={handleNewJobName} jobLocationFunc={handleNewJobLocation} jobSalaryFunc={handleNewJobSalary} onSubmit={pushToDataBase} />
+
+// <ViewCompany filter={filter} jobs={jobs} deleteFunc={removeFromDatabase}/>
 
