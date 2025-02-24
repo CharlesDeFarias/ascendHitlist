@@ -6,9 +6,6 @@
 // User should be able to filter companies based on criteria of the developer’s choice (e.g., by priority, location, or name).
 // Implement error handling for at least one API request
 
-// Component: Hitlist body where companies show up. Users can delete companies and filter them based on various criteria.
-// Component: New company form where users can add new companies.
-// Component: Error handling component that shows up when an API request fails.
 
 const SubmitForm = () => {
     return (
@@ -19,4 +16,5 @@ const SubmitForm = () => {
   };
   
   export default SubmitForm
+  
   
