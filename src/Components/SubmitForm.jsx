@@ -11,19 +11,21 @@ import axios from 'axios'
 
 
 const SubmitForm = () => {
-    const [newProspect, setNewProspect] = useState({name:"",
+    const [newProspect, setNewProspect] = useState({
+        name:"",
         type:"",
         salary:"",
         location:"",
         note:"",
-        tags:"",})
+        tags:[],
+    })
 
     const addNewProspect = (event) => {
         console.log(newProspect)
         event.preventDefault()
         console.log('button clicked', event.target)
         const baseProspect = {
-            content: newProspect,
+            ...newProspect,
             important: Math.random() < 0.5,
           }
         axios
@@ -34,13 +36,16 @@ const SubmitForm = () => {
     }
 
     const handleInputChange = (event) => {
-    const name = event.target.name
-    const babyProspect = {...newProspect, [name]: event.target.value}
-    setNewProspect(babyProspect)
-    console.log(newProspect)
+        const name = event.target.name
+        const value = event.target.value
+        let finalValue = name === "tags" ? value.split(", ") : value
+        console.log(finalValue)
+        const babyProspect = {...newProspect, [name]: finalValue}
+        setNewProspect(babyProspect)
+        console.log(newProspect)
     }
 
-    return (
+    return ( 
       <>
       <p>NOICE, Nabbed a new one? Add it here</p>
       <form onSubmit={addNewProspect}>
@@ -58,3 +63,6 @@ const SubmitForm = () => {
   
   export default SubmitForm
   
+
+  
+

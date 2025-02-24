@@ -6,7 +6,7 @@ import ListHeader from './ListHeader';
 const ListBody = ({prospects}) => {
   const [filter, setFilter]  = useState('');
 // console.log(prospects)
-// console.log(filter)
+console.log(prospects)
   const finalProspects = prospects.filter(prospect => prospect.name.toLowerCase().includes(filter.toLowerCase()))
 
 
