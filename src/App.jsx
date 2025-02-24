@@ -1,6 +1,7 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import './App.css'
 import Hitlist from './Components/Hitlist.jsx'
+import axios from 'axios'
 
 // Do: Build a Hitlist using React (JS or TS)
 // Definition of Done:
@@ -15,11 +16,22 @@ import Hitlist from './Components/Hitlist.jsx'
 // Component: Error handling component that shows up when an API request fails.
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [prospects, setProspects] = useState([])
+
+  useEffect(() => {
+    console.log('effect')
+    axios
+      .get('http://localhost:3001/Prospects')
+      .then(response => {
+        console.log('promise fulfilled')
+        setProspects(response.data)
+      })
+  }, [])
+  console.log('render', prospects.length, 'notes')
 
   return (
     <>
-    <Hitlist />
+    <Hitlist prospects={prospects}/>
     </>
   )
 }

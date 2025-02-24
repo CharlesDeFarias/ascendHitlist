@@ -2,58 +2,11 @@ import { useState, useEffect} from 'react'
 import ListHeader from './ListHeader';
 //ok got filtering working bare minimum level. problem is it refreshes page immdiately so unless you type quickly, you can only get one letter in. need to fix that. also ideally you can search by any field, not just name.
 //also need to add delete functionality
- let prospectsMock= [
-    {
-      "id": "000001",
-      "name": "Tilinger's Concierge",
-      "location": "Boston, Ma",
-      "type": "Full-time",
-      "salary": "TBD",
-      "tags": ["Consulting", "CiC", "Hybrid"],
-      "note": "High effort, high reward. In pitch stage as of 2.24.25"    
-    },
-    {
-      "id": "000002",
-      "name": "Brazusa Cleaning",
-      "location": "Boston, Ma",
-      "type": "Part-time",
-      "salary": "30,000",
-      "tags": ["Consulting", "CiC", "virtual"],
-      "note": "Significant amount of work done, need to create case study."
-    },
-    {
-      "id": "000003",
-      "name": "Brazusa Services",
-      "location": "Boston, Ma",
-      "type": "Part-time",
-      "salary": "TBD",
-      "tags": ["Consulting", "Virtual", "Entrepreneurship"],
-      "note": "High effort, investment costs, high reward. Need to register & create promo materials"
-    },
-    {
-      "id": "000004",
-      "name": "Charles in Charge Consulting",
-      "location": "Boston, Ma",
-      "type": "Full-time",
-      "salary": "TBD",
-      "tags": ["consulting", "CiC", "Hybrid", "Entrepreneurship"],
-      "note": "High effort, investment costs, high reward. Need to register & create promo materials"
-    },
-    {
-      "id": "000005",
-      "name": "test",
-      "location": "Boston, Ma",
-      "type": "Full-time",
-      "salary": "TBD",
-      "tags": ["consulting", "CiC", "Hybrid", "Entrepreneurship"],
-      "note": "High effort, investment costs, high reward. Need to register & create promo materials"
-    }
-  ];
 
 const ListBody = ({prospects}) => {
   const [filter, setFilter]  = useState('');
-  prospects=prospectsMock
-
+// console.log(prospects)
+// console.log(filter)
   const finalProspects = prospects.filter(prospect => prospect.name.toLowerCase().includes(filter.toLowerCase()))
 
 

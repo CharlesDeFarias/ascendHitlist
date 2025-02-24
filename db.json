@@ -1,40 +1,69 @@
 {
-    "Prospects": [
-      {
-        "id": "000001",
-        "Name": "Tilinger's Concierge",
-        "location": "Boston, Ma",
-        "type": "Full-time",
-        "salary": "TBD",
-        "tags": ["Consulting", "CiC", "Hybrid"],
-        "note": "High effort, high reward. In pitch stage as of 2.24.25"    
+  "Prospects": [
+    {
+      "id": "000001",
+      "name": "Tilinger's Concierge",
+      "location": "Boston, Ma",
+      "type": "Full-time",
+      "salary": "TBD",
+      "tags": [
+        "Consulting",
+        "CiC",
+        "Hybrid"
+      ],
+      "note": "High effort, high reward. In pitch stage as of 2.24.25"
+    },
+    {
+      "id": "000002",
+      "name": "Brazusa Cleaning",
+      "location": "Boston, Ma",
+      "type": "Part-time",
+      "salary": "30,000",
+      "tags": [
+        "Consulting",
+        "CiC",
+        "virtual"
+      ],
+      "note": "Significant amount of work done, need to create case study."
+    },
+    {
+      "id": "000003",
+      "name": "Brazusa Services",
+      "location": "Boston, Ma",
+      "type": "Part-time",
+      "salary": "TBD",
+      "tags": [
+        "Consulting",
+        "Virtual",
+        "Entrepreneurship"
+      ],
+      "note": "High effort, investment costs, high reward. Need to register & create promo materials"
+    },
+    {
+      "id": "000004",
+      "name": "Charles in Charge Consulting",
+      "location": "Boston, Ma",
+      "type": "Full-time",
+      "salary": "TBD",
+      "tags": [
+        "consulting",
+        "CiC",
+        "Hybrid",
+        "Entrepreneurship"
+      ],
+      "note": "High effort, investment costs, high reward. Need to register & create promo materials"
+    },
+    {
+      "id": "4efc",
+      "content": {
+        "name": "q",
+        "type": "w",
+        "salary": "e",
+        "location": "r",
+        "note": "t",
+        "tags": "y"
       },
-      {
-        "id": "000002",
-        "Name": "Brazusa Cleaning",
-        "location": "Boston, Ma",
-        "type": "Part-time",
-        "salary": "30,000",
-        "tags": ["Consulting", "CiC", "virtual"],
-        "note": "Significant amount of work done, need to create case study."
-      },
-      {
-        "id": "000003",
-        "Name": "Brazusa Services",
-        "location": "Boston, Ma",
-        "type": "Part-time",
-        "salary": "TBD",
-        "tags": ["Consulting", "Virtual", "Entrepreneurship"],
-        "note": "High effort, investment costs, high reward. Need to register & create promo materials"
-      },
-      {
-        "id": "000004",
-        "Name": "Charles in Charge Consulting",
-        "location": "Boston, Ma",
-        "type": "Full-time",
-        "salary": "TBD",
-        "tags": ["consulting", "CiC", "Hybrid", "Entrepreneurship"],
-        "note": "High effort, investment costs, high reward. Need to register & create promo materials"
-      }
-    ]
-  }
+      "important": false
+    }
+  ]
+}
